@@ -1,12 +1,12 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-alphabet.index("a")
-cool = "IDK MAN WHAT DO U WANT"
+plaintext = "hello"
 
 def encrypt(x, a, c):
-    return (x * a + c) % len(alphabet)
+    return (a * x + c) % (len(alphabet))
 
-def encrypt_text(txt):
-    for char in txt:
+def encrypt_text(text):
+    array = []
+    for char in text:
         index = encrypt(alphabet.index(char), 5, 2)
         newChar = alphabet[index]
         array.append(newChar)
@@ -16,4 +16,4 @@ def encrypt_text(txt):
 def decrypt(x, a, c):
     return 
 
-print(encrypt_text(cool))
+print(encrypt_text(plaintext))
