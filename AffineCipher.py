@@ -13,7 +13,13 @@ def encrypt_text(text):
 
     return "".join(array)
 
+def find_inverse():
+    for i in range(1, len(alphabet)):
+        if (i * a) % len(alphabet) == 1:
+            return i
+    return -1
+
 def decrypt(x, a, c):
-    return 
+    return (x - c)
 
 print(encrypt_text(plaintext))
