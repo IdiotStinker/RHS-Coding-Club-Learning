@@ -8,7 +8,7 @@ data = [
     [2, 3, 7, 7]
 ]
 
-dataTruthiness = [
+grid = [
     [False, False, False, False],
     [False, False, False, False],
     [False, False, False, False],
@@ -16,11 +16,6 @@ dataTruthiness = [
 ]
 
 N = len(data)
-
-grid = []
-
-for row in dataTruthiness:
-    grid.append([char for char in row])
 
 def backTrack(row, col):
     if row == N: return True
@@ -55,24 +50,7 @@ def valid(row, col):
     if totalValue > colAddValues[col]:
         return False
     
-    
-    
-    #if row != 0 and col == 0:
-    #    return validAndEqual(row - 1)
-
     return True
-
-def validAndEqual(row):
-    totalValue = 0
-    for index, rowVal in enumerate(data[row]):
-        if grid[row][index]:
-            totalValue += rowVal
-
-    if rowVal != rowAddValues[row]:
-        return False
-    else:
-        return True
-
 
 def print_sol():
     for row in grid:
