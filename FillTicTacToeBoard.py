@@ -1,5 +1,18 @@
-N = len(data)
+data = [
+    'XX....#....',
+    '.O#.#......',
+    '..#XO#....#',
+    'O..##.O....',
+    '##.....O...',
+    '...........',
+    '.......O...',
+    '.....##....',
+    '..........#',
+    '......#....',
+    '...........'
+]
 
+N = len(data)
 grid = []
 
 for row in data:
@@ -28,9 +41,9 @@ def valid(row, col):
         r, c = row - dr, col - dc
         while 0 <= r < N and 0 <= c < N and grid[r][c] == grid[row][col]:
             streak += 1
-            r, c = r + dr, c + dc
+            r, c = r - dr, c - dc
 
-        if streak >=: return False
+        if streak >= 3: return False
     return True
 
 def print_sol():
