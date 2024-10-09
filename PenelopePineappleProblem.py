@@ -26,7 +26,6 @@ def backTrack(row, col):
         if valid(row, col) and backTrack(row, col + 1): return True
     
     grid[row][col] = False
-    print("very sad :(")
     return False
 
 def valid(row, col):
