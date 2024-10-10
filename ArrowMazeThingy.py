@@ -1,8 +1,11 @@
+import sys
+sys.setrecursionlimit(10000000)
+
 data = [
     [[0, 0], [0, 1], [0, -1], [1, 0]],
     [[1, 0], [-1, -1], [-1, 0], [-1, 1]],
-    [[1, 0], [1, 1], [-1, -1], [-1, 0]],
-    [[1, -1], [-1, 0], [1, -1], [-1, 0]]
+    [[1, 0], [1, 1], [-1, -1], [0, -1]],
+    [[-1, 1], [0, -1], [-1, 1], [-1, 0]]
 ]
 
 grid = [
@@ -15,15 +18,16 @@ grid = [
 N = len(grid)
 
 def backTrack(row, col, value, start = False):
+    
     if start:
-        for r in grid:
-            for c, value in enumerate(r):
+        for r, fullRow in enumerate(grid):
+            for c, value in enumerate(fullRow):
                 if value == 1:
                     row = r
                     col = c
+
     if row == N: return True
     if col == N: return backTrack(row + 1, col, value)
-    if grid[row][col] != -1: return backTrack(row, col + 1, value)
 
     spots = findSpotsInDirection(row, col)
 
@@ -52,5 +56,7 @@ def print_sol():
     for row in grid:
         print("".join(str(row)))
 
+spots = findSpotsInDirection(2, 3)
+print(spots)
 backTrack(0, 2, 1, True)
 print_sol()
