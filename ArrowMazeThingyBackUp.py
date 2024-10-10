@@ -1,4 +1,4 @@
-
+'''
 dataArrow = [
     [[0, 1], [0, 1], [0, 1], [1, 1], [1, 1], [1, -1], [0, -1]],
     [[1, 0], [0, 1], [1, 0], [1, -1], [0, -1], [1, 0], [1, 0]],
@@ -18,8 +18,8 @@ data = [
     [11, -1, -1, -1, -1, -1, -1],
     [17, -1, 47, -1, 45, -1, 49]
 ]
-
 '''
+
 dataArrow = [
     [[0, 0], [0, 1], [0, -1], [1, 0]],
     [[1, 0], [-1, -1], [0, -1], [1, -1]],
@@ -33,14 +33,12 @@ data = [
     [-1, -1, -1, -1],
     [-1, -1, -1, -1]
 ]
-'''
 
 grid = []
 
 for row in data:
     grid.append([char for char in row])
 
-givenNumbers = []
 N = len(grid)
 
 def backTrack(row, col, value, start = False):
@@ -52,20 +50,12 @@ def backTrack(row, col, value, start = False):
                     row = r
                     col = c
 
-                if val != -1:
-                    givenNumbers.append(val)
-
-        givenNumbers.sort()
-
     if row == N: 
         print("huh")
         return True
     if col == N:
         print("heh")
         return backTrack(row + 1, col, value)
-    
-    if value in givenNumbers and grid[row][col] != value:
-        return False
 
     if not (grid[row][col] == -1 or start):
         return False
@@ -102,7 +92,15 @@ def print_sol():
     for row in grid:
         print("".join(str(row)))
 
-backTrack(0, 0, 1, True)
+
+for r in range(N):
+    for c in range(N):
+        if r == 0 and c == 0:
+            pass
+        else:
+            findSpotsInDirection(r, c)
+
+if not backTrack(0, 0, 1, True):
+    print ("very sad")
 print_sol()
 
-print(givenNumbers)
