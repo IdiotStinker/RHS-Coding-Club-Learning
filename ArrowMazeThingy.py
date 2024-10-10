@@ -26,8 +26,16 @@ def backTrack(row, col, value, start = False):
                     row = r
                     col = c
 
-    if row == N: return True
-    if col == N: return backTrack(row + 1, col, value)
+    if row == N: 
+        print("huh")
+        return True
+    if col == N: 
+        print("heh")
+        return backTrack(row + 1, col, value)
+
+    if not (grid[row][col] == -1 or start): 
+        print("hm")
+        return False
 
     spots = findSpotsInDirection(row, col)
 
@@ -56,7 +64,16 @@ def print_sol():
     for row in grid:
         print("".join(str(row)))
 
-spots = findSpotsInDirection(2, 3)
-print(spots)
-backTrack(0, 2, 1, True)
-print_sol()
+
+
+for r, fullRow in enumerate(grid):
+    for c, value in enumerate(fullRow):
+        print(findSpotsInDirection(r, c))
+                
+print("why")
+
+
+#if not backTrack(0, 2, 1, True):
+#    print ("very sad")
+#print_sol()
+
