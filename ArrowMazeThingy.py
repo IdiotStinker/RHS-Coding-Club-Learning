@@ -51,7 +51,6 @@ def backTrack(row, col, value, start = False):
                 if val == 1:
                     row = r
                     col = c
-                    print(str(r) + str(c))
 
                 if val != -1:
                     givenNumbers.append(val)
@@ -74,10 +73,10 @@ def backTrack(row, col, value, start = False):
     spots = findSpotsInDirection(row, col)
 
     for spotIndex in range(spots):
-        dr = dataArrow[row][col][0]
-        dc = dataArrow[row][col][1]
+        Δr = dataArrow[row][col][0]
+        Δc = dataArrow[row][col][1]
         grid[row][col] = value
-        if backTrack(row + dr * (spotIndex + 1), col + dc * (spotIndex + 1), value + 1): return True
+        if backTrack(row + Δr * (spotIndex + 1), col + Δc * (spotIndex + 1), value + 1): return True
 
     if value == N*N - 1:
         return True
@@ -87,26 +86,32 @@ def backTrack(row, col, value, start = False):
     return False
 
 def findSpotsInDirection(row, col):
-    dr = dataArrow[row][col][0]
-    dc = dataArrow[row][col][1]
+    Δr = dataArrow[row][col][0]
+    Δc = dataArrow[row][col][1]
     spots = 0
-    if dr == 0 and dc == 0:
-        print("error")
+    if Δr == 0 and Δc == 0:
         return 0
     
-    while 0 <= row + dr < N and 0 <= col + dc < N:
-        row += dr
-        col += dc
+    while 0 <= row + Δr < N and 0 <= col + Δc < N:
+        row += Δr
+        col += Δc
         spots += 1
 
     return spots
 
 def print_sol():
+
+    for r, fullRow in enumerate(grid):
+        for c, val in enumerate(fullRow):
+            if len(str(val)) == 1:
+                val = " " + str(val)
+            else:
+                val = str(val)
+            grid[r][c] = val
+
     for row in grid:
         print("".join(str(row)))
 
 if (backTrack(0, 0, 1, True)):
     print("yay")
 print_sol()
-
-print(givenNumbers)
