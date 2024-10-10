@@ -67,7 +67,7 @@ def print_sol():
         print("".join(str(row)))
 
 
-findSpotsInDirection(2, 1)
+findSpotsInDirection(0, 0)
 #for r in range(N):
 #    for c in range(N):
 #        findSpotsInDirection(r, c)
