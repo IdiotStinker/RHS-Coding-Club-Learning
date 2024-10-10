@@ -58,6 +58,8 @@ def findSpotsInDirection(row, col):
         row += dr
         col += dc
         spots += 1
+
+    print(spots)
     return spots
 
 def print_sol():
@@ -65,6 +67,10 @@ def print_sol():
         print("".join(str(row)))
 
 
+findSpotsInDirection(2, 1)
+#for r in range(N):
+#    for c in range(N):
+#        findSpotsInDirection(r, c)
 
 
 print("why")
