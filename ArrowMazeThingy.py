@@ -29,7 +29,7 @@ dataArrow = [
 
 data = [
     [16, -1, 1, -1],
-    [-1, -1, -1, -1],
+    [-1, -1, 8, -1],
     [-1, -1, -1, -1],
     [-1, -1, -1, -1]
 ]
@@ -51,6 +51,7 @@ def backTrack(row, col, value, start = False):
                 if val == 1:
                     row = r
                     col = c
+                    print(str(r) + str(c))
 
                 if val != -1:
                     givenNumbers.append(val)
@@ -63,11 +64,11 @@ def backTrack(row, col, value, start = False):
     if col == N:
         print("heh")
         return backTrack(row + 1, col, value)
-    
+
     if value in givenNumbers and grid[row][col] != value:
         return False
 
-    if not (grid[row][col] == -1 or start):
+    if (not grid[row][col] == -1 and not value in givenNumbers):
         return False
 
     spots = findSpotsInDirection(row, col)
@@ -80,7 +81,9 @@ def backTrack(row, col, value, start = False):
 
     if value == N*N - 1:
         return True
+    
     grid[row][col] = -1
+
     return False
 
 def findSpotsInDirection(row, col):
@@ -102,7 +105,8 @@ def print_sol():
     for row in grid:
         print("".join(str(row)))
 
-backTrack(0, 0, 1, True)
+if (backTrack(0, 0, 1, True)):
+    print("yay")
 print_sol()
 
 print(givenNumbers)
