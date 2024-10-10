@@ -82,7 +82,7 @@ def backTrack(row, col, value, start = False):
     if value == N*N - 1:
         return True
     
-    grid[row][col] = -1
+    grid[row][col] = data[row][col]
 
     return False
 
