@@ -66,10 +66,7 @@ def print_sol():
 
 
 
-for r, fullRow in enumerate(grid):
-    for c, value in enumerate(fullRow):
-        print(findSpotsInDirection(r, c))
-                
+
 print("why")
 
 
