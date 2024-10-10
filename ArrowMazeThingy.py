@@ -29,7 +29,7 @@ dataArrow = [
 
 data = [
     [16, -1, 1, -1],
-    [-1, -1, 8, -1],
+    [-1, -1, -1, -1],
     [-1, -1, -1, -1],
     [-1, -1, -1, -1]
 ]
@@ -109,9 +109,10 @@ def print_sol():
                 val = str(val)
             grid[r][c] = val
 
-    for row in grid:
-        print("".join(str(row)))
+    for i, row in enumerate(grid):
+        itemToPrint = "".join(str(row))
+        itemToPrint = itemToPrint.replace("'", '')
+        print("Row " + str(i + 1) + " " + itemToPrint)
 
-if (backTrack(0, 0, 1, True)):
-    print("yay")
+backTrack(0, 0, 1, True)
 print_sol()
