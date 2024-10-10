@@ -48,7 +48,7 @@ def valid(row, col):
 
 def print_sol():
     for row in grid:
-        print("".join(row))
+        print("".join(str(row)))
 
 backTrack(0, 0)
 print_sol()
