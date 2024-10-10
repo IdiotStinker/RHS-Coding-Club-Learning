@@ -54,7 +54,7 @@ def findSpotsInDirection(row, col):
     dr = data[row][col][0]
     dc = data[row][col][1]
     spots = 0
-    while 0 <= row + dr <= N and 0 <= col + dc <= N:
+    while 0 <= row + dr < N and 0 <= col + dc < N:
         row += dr
         col += dc
         spots += 1
@@ -67,10 +67,12 @@ def print_sol():
         print("".join(str(row)))
 
 
-findSpotsInDirection(0, 0)
-#for r in range(N):
-#    for c in range(N):
-#        findSpotsInDirection(r, c)
+for r in range(N):
+    for c in range(N):
+        if r == 0 and c == 0:
+            pass
+        else:
+            findSpotsInDirection(r, c)
 
 
 print("why")
