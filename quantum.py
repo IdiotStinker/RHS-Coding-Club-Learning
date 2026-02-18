@@ -1,7 +1,7 @@
 from qiskit import QuantumCircuit
 from qiskit.primitives import StatevectorSampler
 
-qc = QuantumCircuit(1, 1)
+qc = QuantumCircuit(2, 1)
 
 qc.h(0)
 qc.h(0)
